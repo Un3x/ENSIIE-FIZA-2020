@@ -1,0 +1,22 @@
+.pageContainer {
+  height:100%;
+  display: flex;
+  justify-content:center;
+}
+
+.contentContainer {
+  display: flex;
+  align-items:center;
+}
+
+.loginContainer {
+  padding: 13px;
+  border: 1px solid black;
+}
+
+.formElementContainer {
+  display: flex;
+  margin: 13px;
+  justify-content:center;
+  flex-direction: column;
+}
