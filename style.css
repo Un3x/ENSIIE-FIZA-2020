@@ -1,7 +1,78 @@
-.pageContainer {
-  height:100%;
+body {
+  margin: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.red {
+  color:#db3a34;
+}
+
+img {
+  width:100%;
+}
+
+.header {
+  width:100%;
+  height: 70px;
+  background-color: #084c61;
+  color: #EEE;
+}
+
+.headerTitleContainer {
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 13px;
   display: flex;
   justify-content:center;
+}
+
+.pageContainer {
+  min-height:90%;
+  margin:13px 0;
+  display: flex;
+  justify-content:center;
+}
+
+.feedContainer {
+  width: 600px;
+  padding: 13px;
+  list-style-type: none;
+}
+
+@media screen and (min-width: 200px) and (max-width: 640px) {
+  .feedContainer {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.postContainer {
+  width: 100%;
+  border: 1px solid black;
+  margin: 7px;
+}
+
+@media screen and (min-width: 200px) and (max-width: 640px) {
+  .postContainer {
+    margin: 13px 0;
+  }
+}
+
+.postTitleContainer {
+  display:flex;
+  margin : 13px;
+}
+
+.postContentContainer {
+  margin : 13px;
+}
+
+.postFooterContainer {
+  display: flex;
+  justify-content: space-between;
+  height:17px;
+  padding:13px;
+  background-color: #ccc;
 }
 
 .contentContainer {
@@ -19,4 +90,26 @@
   margin: 13px;
   justify-content:center;
   flex-direction: column;
+}
+
+.footer {
+  width:100%;
+  height: 70px;
+  background-color: #084c61;
+  color: #EEE;
+}
+
+.footerTitleContainer {
+  font-weight: 600;
+  padding: 13px;
+  display: flex;
+  justify-content:center;
+}
+
+.userPicture {
+  background-color: #ccc;
+  border-radius: 50%;
+  width: 25px;
+  height:25px;
+  margin-right:13px;
 }
