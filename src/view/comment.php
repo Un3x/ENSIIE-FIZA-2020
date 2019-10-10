@@ -2,7 +2,7 @@
   <? foreach ($data as $comment): ?>
   <li class="postContainer">
     <div class="postTitleContainer">
-      <img class="userPicture" /> <?= $comment['author'] ?>
+      <img class="userPicture" /> <?= $comment['pseudo'] ?>
     </div>
     <div class="postContentContainer">
       <?= $comment['content'] ?>

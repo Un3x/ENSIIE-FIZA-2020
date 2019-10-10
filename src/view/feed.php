@@ -3,10 +3,10 @@
   <li class="postContainer">
       <div class="postTitleContainer">
         <img class="userPicture" />
-        <?= $post['author'] ?>
+        <?= $post['pseudo'] ?>
       </div>
     <div class="postImgContainer">
-      <img src="<?= $post['img']?>">
+      <img src="<?= $post['img_url']?>">
     </div>
     <div class="postContentContainer">
       <?= $post['content'] ?>  
@@ -21,7 +21,7 @@
         <?php endif; ?>
       </div>
       <div class="postCommentContainer">
-        <a href="comment.php">Comment 
+        <a href="<?= 'comment?postId=' . $post['id'] ?>">Comment
           <i class="far fa-comments"></i>
         </a>
       </div>

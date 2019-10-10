@@ -4,7 +4,7 @@
 <div class="contentContainer">
   <div class="loginContainer">
     <div>
-      <form method="get" action="feed.php">
+      <form method="get" action="feed">
         <div class="formElementContainer">
           <label>Pseudo</label>
           <input type="text" placeholder="votre peusdo ici" />
@@ -18,7 +18,7 @@
         </div>
       </form>
       Vous n'avez pas de compte ?
-      <a href="subscribe.php">inscrivez vous</a>
+      <a href="subscribe">inscrivez vous</a>
     </div>
   </div>
 </div>
