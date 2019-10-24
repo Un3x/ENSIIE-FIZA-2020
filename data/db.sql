@@ -3,7 +3,8 @@ CREATE TABLE "user" (
   pseudo VARCHAR(55) UNIQUE NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255),
-  created_at TIMESTAMP DEFAULT NOW()
+  created_at TIMESTAMP DEFAULT NOW(),
+  authent_token VARCHAR(255) DEFAULT NULL
 );
 
 CREATE TABLE "post" (

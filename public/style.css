@@ -113,3 +113,8 @@ img {
   height:25px;
   margin-right:13px;
 }
+
+.error {
+  color: red;
+  line-height: 0.2em;
+}

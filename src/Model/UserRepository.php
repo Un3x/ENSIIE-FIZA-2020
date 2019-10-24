@@ -1,0 +1,57 @@
+<?php
+
+namespace Model;
+
+class UserRepository
+{
+
+    /**
+     * @var \PDO
+     */
+    private $dbh;
+
+    /**
+     * CommentController constructor.
+     * @param \PDO $dbh
+     */
+    public function __construct (\PDO $dbh)
+    {
+        $this->dbh = $dbh;
+    }
+
+    public function insert($data)
+    {
+        $stmt = $this->dbh->prepare('INSERT INTO "user" (email, pseudo, password) VALUES (:email, :pseudo, :password)');
+        $stmt->bindParam(':email', $data['email']);
+        $stmt->bindParam(':pseudo', $data['pseudo']);
+        $stmt->bindParam(':password', $data['password']);
+        $stmt->execute();
+
+    }
+
+    public function findByPseudo ($pseudo)
+    {
+        $stmt = $this->dbh->prepare('Select * from "user" where pseudo = :pseudo');
+        $stmt->bindParam(':pseudo', $pseudo);
+        $stmt->execute();
+        $user = $stmt->fetch();
+        return $user ? $user : null;
+    }
+
+    public function findByAuthentToken($authentToken)
+    {
+        $stmt = $this->dbh->prepare('Select * from "user" where authent_token = :authent_token');
+        $stmt->bindParam(':authent_token', $authentToken);
+        $stmt->execute();
+        $user = $stmt->fetch();
+        return $user ? $user : null;
+    }
+
+    public function updateAuthentToken ($uniqid, $id)
+    {
+        $stmt = $this->dbh->prepare('UPDATE  "user" set authent_token = :uniqid where id = :id');
+        $stmt->bindParam(':uniqid', $uniqid);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+    }
+}

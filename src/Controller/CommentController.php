@@ -4,23 +4,16 @@ namespace Controller;
 Class CommentController {
 
     /**
-     * @var \PDO
-     */
-    private $dbh;
-
-    /**
      * @var \Model\CommentRepository
      */
     private $commentRepository;
 
     /**
      * CommentController constructor.
-     * @param \PDO $dbh
      */
-    public function __construct (\PDO $dbh)
+    public function __construct (\Model\CommentRepository $commentRepository)
     {
-        $this->dbh = $dbh;
-        $this->commentRepository = new \Model\CommentRepository($dbh);
+        $this->commentRepository = $commentRepository;
     }
 
 

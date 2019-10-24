@@ -1,22 +1,8 @@
 <?php
 namespace Controller;
 
-Class IndexController {
-
-    /**
-     * @var \PDO
-     */
-    private $dbh;
-
-    /**
-     * CommentController constructor.
-     * @param \PDO $dbh
-     */
-    public function __construct (\PDO $dbh)
-    {
-        $this->dbh = $dbh;
-    }
-
+Class IndexController
+{
     function execute ()
     {
         include_once '../src/view/layout.php';

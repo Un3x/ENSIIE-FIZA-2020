@@ -18,7 +18,7 @@ class FeedRepository {
         $this->dbh = $dbh;
     }
 
-    function getFeed() {
+    function getFeed($userId) {
         $query = <<<SQL
   SELECT 
     p.id as id,
@@ -27,7 +27,7 @@ class FeedRepository {
     p.content as content,
     p.created_at as created_at,
     (SELECT COUNT(id) from "like" as l where l.post_id = p.id) as likes,
-    (CASE WHEN (SELECT id from "like" as l where l.user_id = "user".id AND p.id = l.post_id) IS NOT NULL THEN TRUE ELSE FALSE END) as liked
+    (CASE WHEN (SELECT id from "like" as l where l.user_id = $userId AND p.id = l.post_id) IS NOT NULL THEN TRUE ELSE FALSE END) as liked
   FROM "post" as p
   INNER JOIN "user" ON user_id = "user".id
 SQL;
