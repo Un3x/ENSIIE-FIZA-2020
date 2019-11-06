@@ -18,10 +18,15 @@ img {
   color: #EEE;
 }
 
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 13px;
+}
+
 .headerTitleContainer {
   text-transform: uppercase;
   font-weight: 600;
-  padding: 13px;
   display: flex;
   justify-content:center;
 }

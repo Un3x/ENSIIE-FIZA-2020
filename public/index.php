@@ -11,6 +11,7 @@ include_once('../src/Controller/IndexController.php');
 include_once('../src/Controller/SubscribeController.php');
 include_once('../src/Controller/ConnectController.php');
 include_once('../src/Controller/AddUserController.php');
+include_once('../src/Controller/LogoutController.php');
 
 include_once('../src/Factory/Controller/FeedControllerFactory.php');
 include_once('../src/Factory/Controller/CommentControllerFactory.php');
@@ -18,6 +19,7 @@ include_once('../src/Factory/Controller/IndexControllerFactory.php');
 include_once('../src/Factory/Controller/SubscribeControllerFactory.php');
 include_once('../src/Factory/Controller/ConnectControllerFactory.php');
 include_once('../src/Factory/Controller/AddUserControllerFactory.php');
+include_once('../src/Factory/Controller/LogoutControllerFactory.php');
 
 include_once('../src/Model/CommentRepository.php');
 include_once('../src/Model/FeedRepository.php');
