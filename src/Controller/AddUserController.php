@@ -27,6 +27,7 @@ Class addUserController {
     function execute () {
         $inputs = $this->getInputs();
         if ($this->isValid($inputs)) {
+            $inputs['password'] = password_hash($inputs['password'],  PASSWORD_BCRYPT);
             $this->userRepository->insert($inputs);
             header('Location: /feed');
         } else {

@@ -30,15 +30,15 @@ CREATE TABLE "like" (
 );
 
 INSERT INTO "user" (email, pseudo, password)
-VALUES ('picasso@artiste.fr','Picasso','jaimepeindre');
+VALUES ('picasso@artiste.fr','Picasso','$2y$10$NyDzzjxPUiDejhtIaQGQcOs2HkaEhnzrCVluHUP2l/MJUSoj7M7Ke');
 INSERT INTO "user" (email, pseudo, password)
-VALUES ('ygc@gmail.com','Young Grumpy Cat','meow');
+VALUES ('ygc@gmail.com','Young Grumpy Cat','$2y$10$YWIemYdnhzVw5u1Uu20u1u6yQa6A5EbdetH5XsY5N8kUB.MDv81qq');
 INSERT INTO "user" (email, pseudo, password)
-VALUES ('jmchauvin@gmail.com','Jean Michel Chauvin','vivelafrance');
+VALUES ('jmchauvin@gmail.com','Jean Michel Chauvin','$2y$10$XFIj5vHMzxmgCDW0po4N4ekkehVPpqqAkbiK/VLIh0JCk/6mMoumW');
 INSERT INTO "user" (email, pseudo, password)
-VALUES ('otaku@expertise.fr','otaku-chan','jemesensseul');
+VALUES ('otaku@expertise.fr','otaku-chan','$2y$10$VpJk2fZms95adzvOJFkNo.Rhq2Z9BUb1OrTcv7nn.peT1J8ur/NzS');
 INSERT INTO "user" (email, pseudo, password)
-VALUES ('beldelphine@gmail.com','Bel Delphine','loveme');
+VALUES ('beldelphine@gmail.com','Bel Delphine','$2y$10$3W3Q9HyG7wR/CSZMFFojOeuo4NzIsPjYBCXvXSU6K1C.b7K0IE4a2');
 
 INSERT INTO "post" (user_id, img_url, content) VALUES (1,'http://static1.squarespace.com/static/58faa30ee6f2e151cda11af0/58fba15486e6c0f3d27362ef/5d6bdabd35affe0001f69f7c/1567372842816/2019-inktober-prompt-list.png?format=1500w','Your bones dont break, mine do. Thats clear. Your cells react to bacteria and viruses differently than mine. You dont get sick, I do. Thats also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. Were on the same curve, just on opposite ends.');
 INSERT INTO "post" (user_id, img_url, content) VALUES (2,'https://timedotcom.files.wordpress.com/2019/03/kitten-report.jpg','Your bones dont break, mine do. Thats clear. Your cells react to bacteria and viruses differently than mine. You dont get sick, I do. Thats also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. Were on the same curve, just on opposite ends.');

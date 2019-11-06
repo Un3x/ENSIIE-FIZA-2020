@@ -37,7 +37,7 @@ Class ConnectController {
                 include_once '../src/view/layout.php';
                 generateView('index', $data);
             } else {
-                $isPasswordValid = $inputs['password'] === $user['password'];
+                $isPasswordValid = password_verify($inputs['password'], $user['password']);
                 if (!$isPasswordValid) {
                     $this->errors['authentication'][] = 'The couple password/login does not match';
                     $data['errors'] = $this->errors;
