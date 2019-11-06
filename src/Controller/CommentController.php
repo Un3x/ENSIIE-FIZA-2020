@@ -20,7 +20,10 @@ Class CommentController {
     function execute () {
         $postId = $_GET['postId'];
 
-        $data = $postId ? $this->commentRepository->fetchCommentForPost($postId) : [];
+        $data = [
+            'postId' => $postId,
+            'comments' => $postId ? $this->commentRepository->fetchCommentForPost($postId) : []
+        ];
 
         include_once '../src/view/layout.php';
         generateView('comment', $data);

@@ -39,4 +39,15 @@ SQL;
             )
         );
     }
+
+    public function insert (
+        array $data,
+        $userId
+    ) {
+        $stmt = $this->dbh->prepare('INSERT INTO "comment" (user_id, post_id, content) VALUES(:userId, :postId, :content)');
+        $stmt->bindParam(':userId', $userId);
+        $stmt->bindParam(':content', $data['content']);
+        $stmt->bindParam(':postId', $data['postId']);
+        $stmt->execute();
+    }
 }

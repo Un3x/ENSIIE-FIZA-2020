@@ -35,5 +35,16 @@ SQL;
         return $this->dbh->query($query);
     }
 
+    public function insert (
+        array $data,
+        $userId
+    ) {
+        $stmt = $this->dbh->prepare('INSERT INTO "post" (user_id, content, img_url) VALUES(:userId, :content, :imgUrl)');
+        $stmt->bindParam(':userId', $userId);
+        $stmt->bindParam(':content', $data['content']);
+        $stmt->bindParam(':imgUrl', $data['img_url']);
+        $stmt->execute();
+    }
+
 }
 

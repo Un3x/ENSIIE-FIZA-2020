@@ -1,5 +1,5 @@
 <ul class="feedContainer">
-  <? foreach ($data as $comment): ?>
+  <? foreach ($data['comments'] as $comment): ?>
   <li class="postContainer">
     <div class="postTitleContainer">
       <img class="userPicture" /> <?= $comment['pseudo'] ?>
@@ -12,8 +12,9 @@
   
   <li class="postContainer">
       <div class="postContentContainer">
-        <form action="">
-          <input type="text" placeholder="ton commentaire" />
+        <form action="addComment" method="post">
+            <input type="hidden" name="post_id" value="<?= $data['postId'] ?>" />
+          <input type="text" name="content" placeholder="ton commentaire" />
           <button type="submit">Commenter</button>
         </form>
       </div>
