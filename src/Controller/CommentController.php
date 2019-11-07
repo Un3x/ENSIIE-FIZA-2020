@@ -25,8 +25,7 @@ Class CommentController {
             'comments' => $postId ? $this->commentRepository->fetchCommentForPost($postId) : []
         ];
 
-        include_once '../src/view/layout.php';
-        generateView('comment', $data);
+        return new \ViewModel('comment', $data);
     }
 }
 

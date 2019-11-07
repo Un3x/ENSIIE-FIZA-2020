@@ -9,27 +9,26 @@ Class LikePostController {
     private $likeRepository;
 
     /**
-     * @var \Model\UserRepository
+     * @var \Service\AuthService
      */
-    private $userRepository;
+    private $authService;
 
     /**
      * LikePostController constructor.
      * @param \Model\LikeRepository $likeRepository
-     * @param \Model\UserRepository $userRepository
+     * @param \Service\AuthService $authService
      */
     public function __construct (
         \Model\LikeRepository $likeRepository,
-        \Model\UserRepository $userRepository
+        \Service\AuthService $authService
     ) {
         $this->likeRepository = $likeRepository;
-        $this->userRepository = $userRepository;
+        $this->authService = $authService;
     }
 
 
     function execute () {
-        $uniqid = $_SESSION['uniqid'];
-        $user = $this->userRepository->findByAuthentToken($uniqid);
+        $user = $this->authService->getCurrentUser();
         $inputs = $this->getInputs();
         if ($this->isValid($inputs)) {
             $this->likeRepository->insert($inputs, $user['id']);

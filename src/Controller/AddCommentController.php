@@ -9,26 +9,25 @@ Class AddCommentController {
     private $commentRepository;
 
     /**
-     * @var \Model\UserRepository
+     * @var \Service\AuthService
      */
-    private $userRepository;
+    private $authService;
 
     /**
      * AddPostController constructor.
      * @param \Model\CommentRepository $commentRepository
-     * @param \Model\UserRepository    $userRepository
+     * @param \Service\AuthService    $authService
      */
     public function __construct (
         \Model\CommentRepository $commentRepository,
-        \Model\UserRepository $userRepository
+        \Service\AuthService $authService
     ) {
         $this->commentRepository = $commentRepository;
-        $this->userRepository = $userRepository;
+        $this->authService = $authService;
     }
 
     function execute () {
-        $uniqid = $_SESSION['uniqid'];
-        $user = $this->userRepository->findByAuthentToken($uniqid);
+        $user = $this->authService->getCurrentUser();
         $inputs = $this->getInputs();
         if ($this->isValid($inputs)) {
             $this->commentRepository->insert($inputs, $user['id']);

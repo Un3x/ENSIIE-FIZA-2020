@@ -9,33 +9,27 @@ Class FeedController
     private $feedRepository;
 
     /**
-     * @var \Model\UserRepository
+     * @var \Service\AuthService
      */
-    private $userRepository;
+    private $authService;
 
     /**
      * CommentController constructor.
      * @param \PDO $dbh
      */
-    public function __construct (\Model\FeedRepository $feedRepository, \Model\UserRepository $userRepository)
+    public function __construct (\Model\FeedRepository $feedRepository, \Service\AuthService $authService)
     {
         $this->feedRepository = $feedRepository;
-        $this->userRepository = $userRepository;
+        $this->authService = $authService;
     }
 
     function execute ()
     {
-        $uniqid = $_SESSION['uniqid'];
-        if (!$uniqid) {
-            header('Location: /');
-        } else {
-            $user = $this->userRepository->findByAuthentToken($uniqid);
+        if ($this->authService->isAuthenticated()) {
+            $user = $this->authService->getCurrentUser();
             $data = $this->feedRepository->getFeed($user['id']);
-            include_once '../src/view/layout.php';
-            generateView(
-                'feed',
-                $data
-            );
+            return new \ViewModel('feed', $data);
         }
+        header('Location: /');
     }
 }

@@ -1,6 +1,6 @@
 <?php
-$user = isset($data['user']) ? $data['user'] : null;
-$errors = isset($data['errors']) ? $data['errors'] : null;
+$user = isset($this->data['user']) ? $this->data['user'] : null;
+$errors = isset($this->data['errors']) ? $this->data['errors'] : null;
 ?>
 
 <div class="contentContainer">

@@ -30,6 +30,7 @@ class FeedRepository {
     (CASE WHEN (SELECT id from "like" as l where l.user_id = $userId AND p.id = l.post_id) IS NOT NULL THEN TRUE ELSE FALSE END) as liked
   FROM "post" as p
   INNER JOIN "user" ON user_id = "user".id
+  ORDER BY created_at DESC
 SQL;
 
         return $this->dbh->query($query);

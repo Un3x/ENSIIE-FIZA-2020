@@ -5,6 +5,10 @@ use Factory\DatabaseAdapterFactory;
 include_once('../src/Service/ServiceManager.php');
 include_once('../src/Factory/FactoryInterface.php');
 
+include_once('../src/Service/AuthService.php');
+include_once('../src/ViewModel.php');
+include_once('../src/Factory/Service/AuthServiceFactory.php');
+
 include_once('../src/Controller/FeedController.php');
 include_once('../src/Controller/CommentController.php');
 include_once('../src/Controller/IndexController.php');
@@ -46,14 +50,19 @@ session_start();
 
 $serviceManager = new \Service\ServiceManager();
 
+$authService = $serviceManager->get(\Factory\Service\AuthServiceFactory::class);
+
 $urlWithoutParams = explode ('?', $_SERVER['REQUEST_URI']);
 $urlParts = explode('/',$urlWithoutParams[0]);
 $urlController = $urlParts[1] !== '' ? $urlParts[1] : 'Index';
 $controllerName = '\Controller\\'. ucfirst($urlController). 'Controller';
 $factoryName = '\Factory\\Controller\\'. ucfirst($urlController). 'ControllerFactory';
+
 if (class_exists($controllerName)) {
     $instance = $serviceManager->get($factoryName);
-    $instance->execute();
+    $viewModel = $instance->execute();
+    $viewModel->setUser($authService->getCurrentUser());
+    $viewModel->render();
 } else {
     include_once '404.php';
 }

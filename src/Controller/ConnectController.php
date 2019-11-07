@@ -34,25 +34,21 @@ Class ConnectController {
             if (!$user) {
                 $this->errors['authentication'][] = 'The couple password/login does not match';
                 $data['errors'] = $this->errors;
-                include_once '../src/view/layout.php';
-                generateView('index', $data);
+                return new \ViewModel('index', $data);
             } else {
                 $isPasswordValid = password_verify($inputs['password'], $user['password']);
                 if (!$isPasswordValid) {
                     $this->errors['authentication'][] = 'The couple password/login does not match';
                     $data['errors'] = $this->errors;
-                    include_once '../src/view/layout.php';
-                    generateView('index', $data);
-                } else {
-                    $_SESSION['uniqid'] = uniqid();
-                    $this->userRepository->updateAuthentToken($_SESSION['uniqid'], $user['id']);
-                    header('Location: /feed');
-                }
+                    return new \ViewModel('index', $data);
+                } 
+                $_SESSION['uniqid'] = uniqid();
+                $this->userRepository->updateAuthentToken($_SESSION['uniqid'], $user['id']);
+                header('Location: /feed');
             }
         } else {
             $data['errors'] = $this->errors;
-            include_once '../src/view/layout.php';
-            generateView('index', $data);
+            return new \ViewModel('index', $data);
         }
 
     }

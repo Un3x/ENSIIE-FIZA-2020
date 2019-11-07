@@ -9,7 +9,7 @@ class FeedControllerFactory implements \Factory\FactoryInterface
     {
         return new \Controller\FeedController(
             $sm->get(\Factory\Model\FeedRepositoryFactory::class),
-            $sm->get(\Factory\Model\UserRepositoryFactory::class)
+            $sm->get(\Factory\Service\AuthServiceFactory::class)
         );
     }
 }

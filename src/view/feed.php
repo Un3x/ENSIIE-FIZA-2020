@@ -14,7 +14,7 @@
             </div>
         </form>
     </li>
-  <?php foreach($data as $post): ?>
+  <?php foreach($this->data as $post): ?>
   <li class="postContainer">
       <div class="postTitleContainer">
         <img class="userPicture" />

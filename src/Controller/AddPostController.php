@@ -9,27 +9,26 @@ Class AddPostController {
     private $feedRepository;
 
     /**
-     * @var \Model\UserRepository
+     * @var \Service\AuthService
      */
-    private $userRepository;
+    private $authService;
 
     /**
      * AddPostController constructor.
      * @param \Model\FeedRepository $feedRepository
-     * @param \Model\UserRepository $userRepository
+     * @param \Service\AuthService $authService
      */
     public function __construct (
         \Model\FeedRepository $feedRepository,
-        \Model\UserRepository $userRepository
+        \Service\AuthService $authService
     ) {
         $this->feedRepository = $feedRepository;
-        $this->userRepository = $userRepository;
+        $this->authService = $authService;
     }
 
 
     function execute () {
-        $uniqid = $_SESSION['uniqid'];
-        $user = $this->userRepository->findByAuthentToken($uniqid);
+        $user = $this->authService->getCurrentUser();
         $inputs = $this->getInputs();
         if ($this->isValid($inputs)) {
             $this->feedRepository->insert($inputs, $user['id']);

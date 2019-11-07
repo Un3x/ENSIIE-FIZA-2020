@@ -9,7 +9,7 @@ class LikePostControllerFactory implements \Factory\FactoryInterface
     {
         return new \Controller\LikePostController(
             $sm->get(\Factory\Model\LikeRepositoryFactory::class),
-            $sm->get(\Factory\Model\UserRepositoryFactory::class)
+            $sm->get(\Factory\Service\AuthServiceFactory::class)
         );
     }
 }

@@ -9,7 +9,7 @@ class AddCommentControllerFactory implements \Factory\FactoryInterface
     {
         return new \Controller\AddCommentController(
             $sm->get(\Factory\Model\CommentRepositoryFactory::class),
-            $sm->get(\Factory\Model\UserRepositoryFactory::class)
+            $sm->get(\Factory\Service\AuthServiceFactory::class)
         );
     }
 }

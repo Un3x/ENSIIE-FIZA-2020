@@ -4,6 +4,7 @@
             IInstagrame
         </div>
         <div>
+            Connected as <?= $this->currentUser['pseudo'] ?>
             <a href="/logout">
                 <button type="button">Logout</button>
             </a>

@@ -9,7 +9,7 @@ class AddPostControllerFactory implements \Factory\FactoryInterface
     {
         return new \Controller\AddPostController(
             $sm->get(\Factory\Model\FeedRepositoryFactory::class),
-            $sm->get(\Factory\Model\UserRepositoryFactory::class)
+            $sm->get(\Factory\Service\AuthServiceFactory::class)
         );
     }
 }

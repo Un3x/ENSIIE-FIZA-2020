@@ -36,10 +36,9 @@ Class addUserController {
                     'email' => $inputs['email'],
                     'pseudo' => $inputs['pseudo'],
                 ],
-                'error' => $this->errors
+                'errors' => $this->errors
             ];
-            include_once '../src/view/layout.php';
-            generateView('subscribe', $data);
+            return new \ViewModel('subscribe', $data);
         }
 
     }
