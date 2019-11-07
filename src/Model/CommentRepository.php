@@ -11,12 +11,18 @@ class CommentRepository
     private $dbh;
 
     /**
+     * @var CommentHydrator
+     */
+    private $commentHydrator;
+
+    /**
      * CommentController constructor.
      * @param \PDO $dbh
      */
-    public function __construct (\PDO $dbh)
+    public function __construct (\PDO $dbh, \Model\CommentHydrator $commentHydrator)
     {
         $this->dbh = $dbh;
+        $this->commentHydrator = $commentHydrator;
     }
 
     function fetchCommentForPost (
@@ -32,12 +38,19 @@ class CommentRepository
     where c.post_id = %s
 SQL;
 
-        return $this->dbh->query(
+        $rawComments =  $this->dbh->query(
             sprintf(
                 $query,
                 $postId
             )
         );
+
+        $comments = [];
+        foreach ($rawComments as $rawComment) {
+            $comment = new \Model\CommentEntity();
+            $comments[] = $this->commentHydrator->hydrate($rawComment, $comment);
+        }
+        return $comments;
     }
 
     public function insert (

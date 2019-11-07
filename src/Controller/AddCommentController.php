@@ -30,7 +30,7 @@ Class AddCommentController {
         $user = $this->authService->getCurrentUser();
         $inputs = $this->getInputs();
         if ($this->isValid($inputs)) {
-            $this->commentRepository->insert($inputs, $user['id']);
+            $this->commentRepository->insert($inputs, $user->getId());
         }
         header('Location: /comment?postId=' . $inputs['postId']);
     }

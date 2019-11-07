@@ -32,11 +32,20 @@ include_once('../src/Factory/Controller/AddPostControllerFactory.php');
 include_once('../src/Factory/Controller/AddCommentControllerFactory.php');
 include_once('../src/Factory/Controller/LikePostControllerFactory.php');
 include_once('../src/Factory/Controller/UnlikePostControllerFactory.php');
+include_once('../src/Factory/Model/PostHydratorFactory.php');
+include_once('../src/Factory/Model/UserHydratorFactory.php');
+include_once('../src/Factory/Model/CommentHydratorFactory.php');
 
 include_once('../src/Model/CommentRepository.php');
 include_once('../src/Model/FeedRepository.php');
 include_once('../src/Model/UserRepository.php');
 include_once('../src/Model/LikeRepository.php');
+include_once('../src/Model/UserEntity.php');
+include_once('../src/Model/CommentEntity.php');
+include_once('../src/Model/PostEntity.php');
+include_once('../src/Model/PostHydrator.php');
+include_once('../src/Model/UserHydrator.php');
+include_once('../src/Model/CommentHydrator.php');
 
 include_once('../src/Factory/Model/CommentRepositoryFactory.php');
 include_once('../src/Factory/Model/FeedRepositoryFactory.php');

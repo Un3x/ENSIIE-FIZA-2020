@@ -10,12 +10,18 @@ class FeedRepository {
     private $dbh;
 
     /**
+     * @var PostHydrator
+     */
+    private $postHydrator;
+
+    /**
      * CommentController constructor.
      * @param \PDO $dbh
      */
-    public function __construct (\PDO $dbh)
+    public function __construct (\PDO $dbh, \Model\PostHydrator $postHydrator)
     {
         $this->dbh = $dbh;
+        $this->postHydrator = $postHydrator;
     }
 
     function getFeed($userId) {
@@ -33,7 +39,13 @@ class FeedRepository {
   ORDER BY created_at DESC
 SQL;
 
-        return $this->dbh->query($query);
+        $rawFeed = $this->dbh->query($query);
+
+        $feed = [];
+        foreach ($rawFeed as $rawPost) {
+            $feed[] = $this->postHydrator->hydrate($rawPost, new \Model\PostEntity());
+        }
+        return $feed;
     }
 
     public function insert (

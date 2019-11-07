@@ -9,7 +9,9 @@ class CommentRepositoryFactory implements \Factory\FactoryInterface
     public function createService ($sm)
     {
         return new \Model\CommentRepository(
-            $sm->get(\Factory\DatabaseAdapterFactory::class)
+            $sm->get(\Factory\DatabaseAdapterFactory::class),
+            $sm->get(\Factory\Model\CommentHydratorFactory::class)
+
         );
     }
 }

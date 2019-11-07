@@ -14,34 +14,37 @@
             </div>
         </form>
     </li>
-  <?php foreach($this->data as $post): ?>
+  <?php
+  /** @var \Model\PostEntity $post */
+  foreach($this->data as $post):
+      ?>
   <li class="postContainer">
       <div class="postTitleContainer">
         <img class="userPicture" />
-        <?= $post['pseudo'] ?>
+        <?= $post->getPseudo() ?>
       </div>
     <div class="postImgContainer">
-      <img src="<?= $post['img_url']?>">
+      <img src="<?= $post->getImgUrl() ?>">
     </div>
     <div class="postContentContainer">
-      <?= $post['content'] ?>  
+      <?= $post->getContent() ?>
     </div>
     <div class="postFooterContainer">
       <div class="postLikeContainer">
-        <span id="post-like-<?= $post['id']?>"><?= $post['likes'] ?></span>
-        <?php if ($post['liked']): ?>
-          <i class="red fas fa-heart" onclick="likePost(this, <?= $post['id'] ?>)"></i>
+        <span id="post-like-<?= $post->getId() ?>"><?= $post->getLikes() ?></span>
+        <?php if ($post->getLiked()): ?>
+          <i class="red fas fa-heart" onclick="likePost(this, <?= $post->getId() ?>)"></i>
         <?php else: ?>
-          <i class="red far fa-heart" onclick="likePost(this, <?= $post['id'] ?>)"></i>
+          <i class="red far fa-heart" onclick="likePost(this, <?= $post->getId() ?>)"></i>
         <?php endif; ?>
       </div>
       <div class="postCommentContainer">
-        <a href="<?= 'comment?postId=' . $post['id'] ?>">Comment
+        <a href="<?= 'comment?postId=' . $post->getId() ?>">Comment
           <i class="far fa-comments"></i>
         </a>
       </div>
       <div class="postLikeContainer">
-        <?= $post['date'] ?>
+        <?= $post->getCreatedAt()->format(\DATE_RSS) ?>
       </div>
     </div>
   </li>

@@ -11,12 +11,18 @@ class UserRepository
     private $dbh;
 
     /**
+     * @var UserHydrator
+     */
+    private $userHydrator;
+
+    /**
      * CommentController constructor.
      * @param \PDO $dbh
      */
-    public function __construct (\PDO $dbh)
+    public function __construct (\PDO $dbh, \Model\UserHydrator $userHydrator)
     {
         $this->dbh = $dbh;
+        $this->userHydrator = $userHydrator;
     }
 
     public function insert($data)
@@ -34,8 +40,12 @@ class UserRepository
         $stmt = $this->dbh->prepare('Select * from "user" where pseudo = :pseudo');
         $stmt->bindParam(':pseudo', $pseudo);
         $stmt->execute();
-        $user = $stmt->fetch();
-        return $user ? $user : null;
+        $rawUser = $stmt->fetch();
+        if ($rawUser) {
+            $user = new \Model\UserEntity();
+            return $this->userHydrator->hydrate($rawUser, $user);
+        }
+        return null;
     }
 
     public function findByAuthentToken($authentToken)
@@ -43,8 +53,12 @@ class UserRepository
         $stmt = $this->dbh->prepare('Select * from "user" where authent_token = :authent_token');
         $stmt->bindParam(':authent_token', $authentToken);
         $stmt->execute();
-        $user = $stmt->fetch();
-        return $user ? $user : null;
+        $rawUser = $stmt->fetch();
+        if ($rawUser) {
+            $user = new \Model\UserEntity();
+            return $this->userHydrator->hydrate($rawUser, $user);
+        }
+        return null;
     }
 
     public function updateAuthentToken ($uniqid, $id)

@@ -27,7 +27,7 @@ Class FeedController
     {
         if ($this->authService->isAuthenticated()) {
             $user = $this->authService->getCurrentUser();
-            $data = $this->feedRepository->getFeed($user['id']);
+            $data = $this->feedRepository->getFeed($user->getId());
             return new \ViewModel('feed', $data);
         }
         header('Location: /');

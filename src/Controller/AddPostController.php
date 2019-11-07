@@ -31,7 +31,7 @@ Class AddPostController {
         $user = $this->authService->getCurrentUser();
         $inputs = $this->getInputs();
         if ($this->isValid($inputs)) {
-            $this->feedRepository->insert($inputs, $user['id']);
+            $this->feedRepository->insert($inputs, $user->getId());
         }
         header('Location: /feed');
     }

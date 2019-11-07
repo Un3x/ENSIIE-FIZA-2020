@@ -1,11 +1,14 @@
 <ul class="feedContainer">
-  <?php foreach ($this->data['comments'] as $comment): ?>
+  <?php
+  /** @var \Model\CommentEntity $comment */
+  foreach ($this->data['comments'] as $comment):
+      ?>
   <li class="postContainer">
     <div class="postTitleContainer">
-      <img class="userPicture" /> <?= $comment['pseudo'] ?>
+      <img class="userPicture" /> <?= $comment->getPseudo() ?>
     </div>
     <div class="postContentContainer">
-      <?= $comment['content'] ?>
+      <?= $comment->getContent() ?>
     </div>
   </li>
   <?php endforeach; ?>

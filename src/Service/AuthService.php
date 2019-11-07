@@ -22,7 +22,7 @@ class AuthService
         return $this->getAuthToken() !== null;
     }
 
-    public function getCurrentUser()
+    public function getCurrentUser(): ?\Model\UserEntity
     {
         if ($this->isAuthenticated()) {
             if (!$this->currentUser) {
